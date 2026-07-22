@@ -6,7 +6,7 @@
 /*   By: casampai <casampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:49:28 by casampai          #+#    #+#             */
-/*   Updated: 2026/07/22 15:37:06 by casampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:43:49 by casampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 void	print_char(char c);
 void	print_str(char *str);
-void	print_ptr(void *ptr);
 void	print_nbr(int nbr);
+void    print_hex(long nbr, int type);
+static void print_letters(long nbr, int type);
 #endif

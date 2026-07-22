@@ -6,7 +6,7 @@
 /*   By: casampai <casampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 14:59:32 by casampai          #+#    #+#             */
-/*   Updated: 2026/07/22 16:31:17 by casampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:45:36 by casampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	select_specifier(char spec, va_list ref)
 	else if(spec == 'd' || spec == 'i')
 		print_nbr(va_arg(ref, int));
 	else if(spec == 'x')
-		
+		print_hex(va_arg(ref, int), 1);
 	else
 		return;
 }
@@ -51,6 +51,6 @@ int	ft_printf(const	char *format, ...)
 
 int	main(void)
 {
-	ft_printf("meu char %c e minha string %s meu n %i", 'i', "STRING_TOP", 5);
+	ft_printf("meu char %c e minha string %s meu n %i meu hex %x", 'i', "STRING_TOP", 5, 438);
 	return (0);
 }
