@@ -6,11 +6,12 @@
 /*   By: casampai <casampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 14:59:32 by casampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:45:36 by casampai         ###   ########.fr       */
+/*   Updated: 2026/07/24 13:53:26 by casampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "stdio.h"
 
 void	select_specifier(char spec, va_list ref)
 {
@@ -51,6 +52,7 @@ int	ft_printf(const	char *format, ...)
 
 int	main(void)
 {
-	ft_printf("meu char %c e minha string %s meu n %i meu hex %x", 'i', "STRING_TOP", 5, 438);
+	ft_printf("meu hex %x", 438);
+
 	return (0);
 }

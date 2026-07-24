@@ -6,7 +6,7 @@
 /*   By: casampai <casampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:03:05 by casampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:51:19 by casampai         ###   ########.fr       */
+/*   Updated: 2026/07/24 15:51:44 by casampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,63 @@ void	print_nbr(int nbr)
 {
 	ft_putnbr_fd(nbr, 1);
 }
-void print_letters(long nbr, int type)
+
+static	int	get_len_n(long n)
+{
+	long	result;
+	size_t	len;
+
+	result = n;
+	len = 0;
+	if (!n)
+		return (1);
+	if (n < 0)
+		len++;
+	while (result != 0)
+	{
+		result /= 10;
+		len++;
+	}
+	return (len);
+}
+
+static char print_letters(long nbr, int type)
 {
 	// A = 10 | B = 11 | C = 12 | D = 13 | E = 14 | F = 15|
 	if (nbr == 10)
-		print_char('A');
+		return ('A');
 	if (nbr == 11)
-		print_char('B');
+		return ('B');
 	if (nbr == 12)
-		print_char('C');
+		return ('C');
 	if (nbr == 13)
-		print_char('D');
+		return ('D');
 	if (nbr == 14)
-		print_char('E');
+		return ('E');
 	if (nbr == 15)
-		print_char('F');
+		return ('F');
 }
-
 void print_hex(long nbr, int type)
 {
-    long number;
-	int count;
+    long    number;
+	int n;
+	char *str;
 
-	count = 0;
     number = nbr;
-    while (number)
+	n = get_len_n(number);
+	str = malloc(n * sizeof(char) + 1);
+	str[n + 1] = '\0';
+	while (n)
 	{
-        number /= 16;
-		count++;
-	}
-	number = 1;
-    while (count && number != nbr)
-    {
-        number *= 16;
-        if (number % 16 < 10)
-            print_nbr(number);
-        if(number % 16 >= 10 && number % 16 <= 15)
-            print_letters(nbr, 1);
-		count--;
-    }
+		if(number % 16 > 9)
+			str[n] = print_letters(number % 16, 1);
+		if(number % 16 <= 9)
+			str[n] = (number % 16) + '0';
+			number /= 16;
+			n--;
+		}
+	print_char(str[0]);
+	print_str(str);
+	free(str);
 }
 
